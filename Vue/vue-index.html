@@ -14,7 +14,47 @@
 </head>
 
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-3">
+                <img class="float-left" src="newlogo.jpg" class="mt-3" height="180">
 
+            </div>
+            <div class="col-6 col-md-4">
+                <!--                <h2 class="display-1">Bookstore</h2>-->
+            </div>
+            <div class="col-6 col-md-4 mt-4">
+                <span class="float-right">
+                <form class="form-inline">
+                    <input class="form-control mr-sm-2 float-right" id="quicksearch" type="search" onkeyup="myFunction()" placeholder="Search for books..">
+                    <button class="button btn btn-info my-5 my-sm-5" type="submit">Search</button>
+                </form>
+                 </span>
+            </div>
+        </div>
+    </div>
+
+    <div id="app">
+        <div v-for="book in books" class="book">
+            <div class="f1_card">
+                <div class="front face">
+                    <img :src="book.cover">
+                </div>
+                <div class="element-item back face center">
+                    <ul id="v-for-object">
+                        <li>
+                            {{ book.title }} {{ book.detail }} {{ book.language }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+    <tr v-for="row in myVueMembers">
+        <td><a v-bind:href="row.url">{{row.first_name}} {{row.middle_name}} {{row.last_name}}</a></td>
+-->
 
 
 

@@ -1,15 +1,29 @@
-let url = 'https://api.myjson.com/bins/8zpvs'
+onload = (function () {
 
-fetch(url, {
+    fetch('https://api.myjson.com/bins/8zpvs')
+        .then(function (response) {
+            return response.json();
         })
-        .then(response => response.json())
-        .then(jsonData => {
-}
-              
-              
+        .then(function (myJson) {
 
-new Vue({
-            el: '#app',
-            data: {
-                
-            }
+            printBooks(myJson.books)
+
+        });
+
+})();
+
+
+function printBooks(myJson) {
+
+    new Vue({
+        el: '#app',
+        data: {
+            books: myJson,
+            gallery: [],
+        },
+        //        myJson.forEach(bookName => {
+        //         if(!this.gallery.includes(bookName)){
+        //         this.gallery.push(bookName);
+        //     }
+    })
+}

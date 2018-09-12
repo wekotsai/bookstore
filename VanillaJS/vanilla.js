@@ -1,3 +1,5 @@
+myBooks = null;
+
 onload = (function () {
 
     fetch('https://api.myjson.com/bins/8zpvs')
@@ -5,15 +7,14 @@ onload = (function () {
             return response.json();
         })
         .then(function (myJson) {
-            //        console.log(myJson.books);
 
             printBooks(myJson.books)
-
+            myBooks = myJson.books;
         });
 
 })();
 
-//print books
+//display books
 function printBooks(myBooks) {
 
     console.log(myBooks);
@@ -25,13 +26,15 @@ function printBooks(myBooks) {
         <div class="book">
             <div class="f1_card">
                 <div class="front face">
-                    <img src="${book.cover}">
+                       <img src="${book.cover}">
                 </div>
                 <div class="element-item back face center">
-                    <p>Title: ${book.title}</p>
-                    <p>Detail: ${book.detail}</p>
-                    <p>Description: ${book.description}</p>
-                    <p>Language: ${book.language}</p>
+                   <ul class="myUL">
+                     <li><p>Title: ${book.title}</p></li>
+                     <li><p>Description: ${book.description}</p></li>
+                     <li><p>Language: ${book.language}</p></li>
+                     <li><p class="imglist"><a href="${book.detail}" data-fancybox="images">More details...</a></p></li>
+                   </ul>
                 </div>
             </div>
         </div>
@@ -41,55 +44,44 @@ function printBooks(myBooks) {
     books.innerHTML = templateTest;
 }
 
-// quick search regex
-var qsRegex;
-var buttonFilter;
+//search bar
+function myFunction(myBooks) {
 
-// init Isotope
-var $book = $('.book').isotope({
-  itemSelector: '.element-item',
-  layoutMode: 'fitRows',
-  filter: function() {
-    var $this = $(this);
-    var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
-    var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
-    return searchResult && buttonResult;
-  }
-});
+    var input, filter, ul, li, p, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementsByClassName("myUL");
 
-$('#filters').on( 'click', 'button', function() {
-  buttonFilter = $( this ).attr('data-filter');
-  $book.isotope();
-});
+    for (let j = 0; j < ul.length; j++) {
 
-// use value of search field to filter
-var $quicksearch = $('#quicksearch').keyup( debounce( function() {
-  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  $book.isotope();
-}) );
+        li = ul[j].getElementsByTagName("li");
+        let showBook = false;
 
+        for (i = 0; i < li.length; i++) {
+            p = li[i].getElementsByTagName("p")[0];
 
-  // change is-checked class on buttons
-$('.button').each( function( i, buttonGroup ) {
-  var $buttonGroup = $( buttonGroup );
-  $buttonGroup.on( 'click', 'button', function() {
-  });
-});
-  
+            if (p.innerHTML.toUpperCase().includes(filter)) {
 
-// debounce so filtering doesn't happen every millisecond
-function debounce( fn, threshold ) {
-  var timeout;
-  threshold = threshold || 100;
-  return function debounced() {
-    clearTimeout( timeout );
-    var args = arguments;
-    var _this = this;
-    function delayed() {
-      fn.apply( _this, args );
+                showBook = true;
+            }
+
+        }
+        if (!showBook) {
+            ul[j].parentElement.parentElement.parentElement.style.display = "none";
+        } else {
+            ul[j].parentElement.parentElement.parentElement.style.display = "block";
+        }
     }
-    timeout = setTimeout( delayed, threshold );
-  };
 }
 
+//fancy box
+$('[data-fancybox="images"]').fancybox({
+    afterLoad: function (instance, current) {
+        var pixelRatio = window.devicePixelRatio || 1;
 
+        if (pixelRatio > 1.5) {
+            current.width = current.width / pixelRatio;
+            current.height = current.height / pixelRatio;
+        }
+    }
+});

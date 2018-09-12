@@ -10,15 +10,12 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
 
-<!--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.1/jquery.fancybox.min.js"></script>
--->
 
 </head>
 
 <body>
-
     <div class="container">
         <div class="row">
             <div class="col-6 col-md-3">
@@ -31,28 +28,17 @@
             <div class="col-6 col-md-4 mt-4">
                <span class="float-right">
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2 float-right" id="quicksearch" type="search" onkeyup="myFunction()" placeholder="Search for books..">
-                    <button class="button btn btn-info my-5 my-sm-5" type="submit">Search</button>
+                    <input onkeyup="myFunction()" class="form-control my-5 my-sm-5 float-right" type="search" id="myInput" placeholder="Search for books..">
+<!--               <button class="button btn btn-info my-5 my-sm-5" type="button">Search</button>-->
                 </form>
-                 </span>
+               </span>
             </div>
         </div>
     </div>
 
 <div id="books">
-<!--
 
-         <div class="container">
-                <img src="${book.cover}" class="col-sm-4 mt-3">
-                <p>${book.title}</p>
-                <p>${book.detail}</p>
-                <p>${book.description}</p>
-                <p>${book.language}</p>
-            </div>
--->
 </div>
-
-<!--<bookstore></bookstore>    -->
     <script src="vanilla.js"></script>
 </body>
 </html>
