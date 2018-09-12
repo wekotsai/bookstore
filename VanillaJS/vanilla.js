@@ -22,13 +22,19 @@ function printBooks(myBooks) {
 
     myBooks.forEach(book => {
         templateTest += `
-            <div class="book">
-                <img src="${book.cover}" class="">
-                <p>${book.title}</p>
-                <p>${book.detail}</p>
-                <p>${book.description}</p>
-                <p>${book.language}</p>
+        <div class="book">
+            <div class="f1_card">
+                <div class="front face">
+                    <img src="${book.cover}">
+                </div>
+                <div class="element-item back face center">
+                    <p>Title: ${book.title}</p>
+                    <p>Detail: ${book.detail}</p>
+                    <p>Description: ${book.description}</p>
+                    <p>Language: ${book.language}</p>
+                </div>
             </div>
+        </div>
         `;
     });
     var books = document.getElementById('books');
@@ -37,21 +43,39 @@ function printBooks(myBooks) {
 
 // quick search regex
 var qsRegex;
+var buttonFilter;
 
 // init Isotope
-var $grid = $('.grid').isotope({
-  itemSelector: '.container',
+var $book = $('.book').isotope({
+  itemSelector: '.element-item',
   layoutMode: 'fitRows',
   filter: function() {
-    return qsRegex ? $(this).text().match( qsRegex ) : true;
+    var $this = $(this);
+    var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+    var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
+    return searchResult && buttonResult;
   }
 });
 
+$('#filters').on( 'click', 'button', function() {
+  buttonFilter = $( this ).attr('data-filter');
+  $book.isotope();
+});
+
 // use value of search field to filter
-var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+var $quicksearch = $('#quicksearch').keyup( debounce( function() {
   qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-  $grid.isotope();
-}, 200 ) );
+  $book.isotope();
+}) );
+
+
+  // change is-checked class on buttons
+$('.button').each( function( i, buttonGroup ) {
+  var $buttonGroup = $( buttonGroup );
+  $buttonGroup.on( 'click', 'button', function() {
+  });
+});
+  
 
 // debounce so filtering doesn't happen every millisecond
 function debounce( fn, threshold ) {
@@ -67,4 +91,5 @@ function debounce( fn, threshold ) {
     timeout = setTimeout( delayed, threshold );
   };
 }
+
 
