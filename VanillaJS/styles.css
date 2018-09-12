@@ -10,3 +10,12 @@ h2 {
 .container {
     margin-top: 20px;
 }
+
+.book > img{
+    width: 300px;
+}
+
+#books{
+    display: flex;
+    flex-wrap: wrap;
+}

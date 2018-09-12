@@ -22,8 +22,8 @@ function printBooks(myBooks) {
 
     myBooks.forEach(book => {
         templateTest += `
-            <div class="container">
-                <img src="${book.cover}" class="col-sm-4 mt-3">
+            <div class="book">
+                <img src="${book.cover}" class="">
                 <p>${book.title}</p>
                 <p>${book.detail}</p>
                 <p>${book.description}</p>
@@ -34,4 +34,37 @@ function printBooks(myBooks) {
     var books = document.getElementById('books');
     books.innerHTML = templateTest;
 }
-//let template = ""
+
+// quick search regex
+var qsRegex;
+
+// init Isotope
+var $grid = $('.grid').isotope({
+  itemSelector: '.container',
+  layoutMode: 'fitRows',
+  filter: function() {
+    return qsRegex ? $(this).text().match( qsRegex ) : true;
+  }
+});
+
+// use value of search field to filter
+var $quicksearch = $('.quicksearch').keyup( debounce( function() {
+  qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+  $grid.isotope();
+}, 200 ) );
+
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  threshold = threshold || 100;
+  return function debounced() {
+    clearTimeout( timeout );
+    var args = arguments;
+    var _this = this;
+    function delayed() {
+      fn.apply( _this, args );
+    }
+    timeout = setTimeout( delayed, threshold );
+  };
+}
+
