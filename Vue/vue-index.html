@@ -17,7 +17,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-md-3">
-                <img class="float-left" src="newlogo.jpg" class="mt-3" height="180">
+                <img class="float-left" src="vuelogo.png" class="mt-3" height="180">
 
             </div>
             <div class="col-6 col-md-4">
@@ -26,8 +26,7 @@
             <div class="col-6 col-md-4 mt-4">
                 <span class="float-right">
                 <form class="form-inline">
-                    <input class="form-control mr-sm-2 float-right" id="quicksearch" type="search" onkeyup="myFunction()" placeholder="Search for books..">
-                    <button class="button btn btn-info my-5 my-sm-5" type="submit">Search</button>
+                    <input onkeyup="myFunction()" class="form-control my-5 my-sm-5 float-right" type="search" id="myInput" placeholder="Search for books..">
                 </form>
                  </span>
             </div>
@@ -41,21 +40,16 @@
                     <img :src="book.cover">
                 </div>
                 <div class="element-item back face center">
-                    <ul id="v-for-object">
-                        <li>
-                            {{ book.title }} {{ book.detail }} {{ book.language }}
-                        </li>
+                    <ul class="myUL">
+                        <li> Title: {{ book.title }}</li>
+                        <li> Language: {{ book.language }}</li>
+                        <li> Description: {{ book.description }}</li>
+                        <li> <a v-bind:href="book.detail" data-fancybox="images"> More details... </a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--
-    <tr v-for="row in myVueMembers">
-        <td><a v-bind:href="row.url">{{row.first_name}} {{row.middle_name}} {{row.last_name}}</a></td>
--->
-
 
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>

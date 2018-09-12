@@ -1,5 +1,5 @@
 body {
-    background-color: #fedc7b;
+    background-color: floralwhite;
 }
 
 h2 {
@@ -28,8 +28,8 @@ li {
 .book img{
     width: 100%;
     height: 100%;
-    border: 1px solid white;
-    border-radius: 12px;
+    border: 2px solid white;
+    border-radius: 10px;
 }
 
 #books{
@@ -48,7 +48,6 @@ li {
 
 .book:hover .f1_card {
   transform: rotateY(180deg);
-/*  box-shadow: -5px 5px 5px #aaa;*/
 }
 
 .face {
@@ -63,6 +62,7 @@ li {
   transform: rotateY(180deg);
   box-sizing: border-box;
   padding: 10px;
+  border: 2px solid white;
   border-radius: 12px;
   font-size: 15px;
   color: #35375d;
@@ -70,6 +70,6 @@ li {
   word-wrap: break-word;
     
 
-background-color: #f57957;
+background-color: #28b1d5;
 background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
 }

@@ -21,9 +21,36 @@ function printBooks(myJson) {
             books: myJson,
             gallery: [],
         },
-        //        myJson.forEach(bookName => {
-        //         if(!this.gallery.includes(bookName)){
-        //         this.gallery.push(bookName);
-        //     }
+  
     })
 }
+
+//filter
+function myFunction() {
+
+  let searchValue = document.getElementById("myInput");
+  let allBooks = Array.from(document.getElementsByClassName("myUL"));
+
+  allBooks.forEach(item =>{
+    var match = item.innerHTML.toUpperCase().includes(searchValue.value.toUpperCase());
+
+    if(match){
+      item.style.display = "block";
+    }else{
+      item.style.display = "none";
+    }
+    
+  })
+}
+
+//fancy box
+$('[data-fancybox="images"]').fancybox({
+    afterLoad: function (instance, current) {
+        var pixelRatio = window.devicePixelRatio || 1;
+
+        if (pixelRatio > 1.5) {
+            current.width = current.width / pixelRatio;
+            current.height = current.height / pixelRatio;
+        }
+    }
+});
