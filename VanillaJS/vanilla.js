@@ -17,8 +17,6 @@ onload = (function () {
 //display books
 function printBooks(myBooks) {
 
-    console.log(myBooks);
-
     var templateTest = '';
 
     myBooks.forEach(book => {

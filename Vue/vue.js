@@ -42,24 +42,6 @@ function printBooks(myJson) {
     })
 }
 
-//search bar filter
-function myFunction() {
-
-    let searchValue = document.getElementById("myInput");
-    let allBooks = Array.from(document.getElementsByClassName("books"));
-
-    allBooks.forEach(item => {
-        var match = item.innerHTML.toUpperCase().includes(searchValue.value.toUpperCase());
-
-        if (match) {
-            item.style.display = "block";
-        } else {
-            item.style.display = "none";
-        }
-
-    })
-}
-
 //fancy box
 $('[data-fancybox="images"]').fancybox({
     afterLoad: function (instance, current) {

@@ -19,7 +19,6 @@ function printBooks(myJson) {
         el: '#app',
         data: {
             books: myJson,
-            backupGallery: myJson,
             searchvalue: "",
         },
         computed:{

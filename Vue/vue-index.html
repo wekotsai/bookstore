@@ -33,25 +33,25 @@
                 </div>
             </div>
         </div>
-<div id="gallery">
-        <div v-for="book in filteredBooks" class="book" >
-            <div class="f1_card">
-                <div class="front face">
-                    <img :src="book.cover">
-                </div>
-                <div class="element-item back face center">
-                    <ul class="myUL">
-                        <li> Title: {{ book.title }}</li>
-                        <li> Language: {{ book.language }}</li>
-                        <li> Description: {{ book.description }}</li>
-                        <li> <a v-bind:href="book.detail" data-fancybox="images"> More details... </a></li>
-                    </ul>
+        <div id="gallery">
+            <div v-for="book in filteredBooks" class="book">
+                <div class="f1_card">
+                    <div class="front face">
+                        <img :src="book.cover">
+                    </div>
+                    <div class="element-item back face center">
+                        <ul class="myUL">
+                            <li> Title: {{ book.title }}</li>
+                            <li> Language: {{ book.language }}</li>
+                            <li> Description: {{ book.description }}</li>
+                            <li> <a v-bind:href="book.detail" data-fancybox="images"> More details... </a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="new-vue.js"></script>
 </body>
