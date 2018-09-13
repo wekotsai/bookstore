@@ -27,14 +27,14 @@
                 <div class="col-6 col-md-4 mt-4">
                     <span class="float-right">
                 <form class="form-inline">
-                    <input v-on:keyup="filter" class="form-control my-5 my-sm-5 float-right" type="search" id="myInput" placeholder="Search for books..">
+                    <input  v-model="searchvalue" class="form-control my-5 my-sm-5 float-right" type="search" id="myInput" placeholder="Search for books..">
                 </form>
                  </span>
                 </div>
             </div>
         </div>
 <div id="gallery">
-        <div v-for="book in books" class="book" >
+        <div v-for="book in filteredBooks" class="book" >
             <div class="f1_card">
                 <div class="front face">
                     <img :src="book.cover">
@@ -53,7 +53,7 @@
 
 </div>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="vue.js"></script>
+    <script src="new-vue.js"></script>
 </body>
 
 </html>

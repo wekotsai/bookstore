@@ -45,8 +45,6 @@ function printBooks(myJson) {
 //search bar filter
 function myFunction() {
 
-    console.log("usahdj")
-
     let searchValue = document.getElementById("myInput");
     let allBooks = Array.from(document.getElementsByClassName("books"));
 
