@@ -21,26 +21,45 @@ function printBooks(myJson) {
             books: myJson,
             gallery: [],
         },
-  
+        methods: {
+            filter() {
+                let searchValue = document.getElementById("myInput");
+                let allBooks = Array.from(document.getElementsByClassName("book"));
+                
+                allBooks.forEach(item => {
+                    var match = item.innerHTML.toUpperCase().includes(searchValue.value.toUpperCase());
+
+                    if (match) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+
+                })
+            }
+        }
+
     })
 }
 
-//filter
+//search bar filter
 function myFunction() {
 
-  let searchValue = document.getElementById("myInput");
-  let allBooks = Array.from(document.getElementsByClassName("myUL"));
+    console.log("usahdj")
 
-  allBooks.forEach(item =>{
-    var match = item.innerHTML.toUpperCase().includes(searchValue.value.toUpperCase());
+    let searchValue = document.getElementById("myInput");
+    let allBooks = Array.from(document.getElementsByClassName("books"));
 
-    if(match){
-      item.style.display = "block";
-    }else{
-      item.style.display = "none";
-    }
-    
-  })
+    allBooks.forEach(item => {
+        var match = item.innerHTML.toUpperCase().includes(searchValue.value.toUpperCase());
+
+        if (match) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+
+    })
 }
 
 //fancy box
